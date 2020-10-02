@@ -2,7 +2,7 @@
 
 ## Introduction
 
->A Cross-Platform Application using TensorFlow-Lite to recognize labels on fruits or vegetables to get more information about their trustworthiness.
+>A Cross-Platform Application using TensorFlow-Lite and FLutter to recognize labels on fruits or vegetables to get more information about their trustworthiness.
 
 ## Installation
 
