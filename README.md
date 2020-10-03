@@ -8,6 +8,6 @@
 
 > Playstore: [Google Play]()
 >
-> APK: [Go to Releases]()
+> APK: [Go to Releases](https://github.com/phibr0/labelcheck/releases)
 >
 > Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
