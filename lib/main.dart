@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:camera/camera.dart';
 import 'bottomSheet.dart';
 import 'camera.dart';
@@ -49,11 +48,12 @@ class _HomeState extends State<Home> {
         children: [
           CameraView(),
           Center(
-              child: Image.asset(
-            'assets/images/finder.png',
-            color: Theme.of(context).primaryColor,
-            height: MediaQuery.of(context).size.height / 1.8,
-          )),
+            child: Image.asset(
+              'assets/images/finder.png',
+              color: Theme.of(context).primaryColor,
+              height: MediaQuery.of(context).size.height / 1.8,
+            ),
+          ),
           Align(
             child: PlatformButton(
               child: Text('Take photo'),

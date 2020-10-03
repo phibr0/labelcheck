@@ -24,7 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_platform_widgets: ^0.60.2
-  modal_bottom_sheet: ^0.2.2
   camera: ^0.5.8+7
 
   # The following adds the Cupertino Icons font to your application.
