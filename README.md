@@ -8,4 +8,6 @@
 
 > Playstore: [Google Play]()
 >
+> APK: [Go to Releases]()
+>
 > Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
