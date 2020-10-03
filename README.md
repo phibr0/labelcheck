@@ -7,5 +7,5 @@
 ## Installation
 
 > Playstore
-
+>
 > Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
