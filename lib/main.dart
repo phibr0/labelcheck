@@ -52,6 +52,7 @@ class _HomeState extends State<Home> {
               child: Image.asset(
             'assets/images/finder.png',
             color: Theme.of(context).primaryColor,
+            height: MediaQuery.of(context).size.height / 1.8,
           )),
           Align(
             child: PlatformButton(
