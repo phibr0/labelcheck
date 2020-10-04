@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:labelcheck/functions.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   @override
@@ -31,8 +32,11 @@ class CustomBottomSheet extends StatelessWidget {
                 height: 6,
                 width: 50,
                 decoration: BoxDecoration(
-                    color: Theme.of(context).disabledColor,
-                    borderRadius: BorderRadius.all(Radius.circular(3))),
+                  color: Theme.of(context).disabledColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(3),
+                  ),
+                ),
                 margin: EdgeInsets.all(5),
               ),
               IconButton(
@@ -47,14 +51,18 @@ class CustomBottomSheet extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                child: Text('Report Error'),
-                padding: EdgeInsets.all(8),
-                margin: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).errorColor,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+              GestureDetector(
+                onTap: () => launchURL(
+                    'mailto:bronzel.phillip@gmail.com?subject=Labelcheck Error&body=Image'), //TODO Implement Image as encoded String in body
+                child: Container(
+                  child: Text('Report Error'),
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).errorColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
                 ),
               ),
