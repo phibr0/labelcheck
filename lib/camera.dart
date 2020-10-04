@@ -1,7 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' show join;
+import 'package:path_provider/path_provider.dart';
 
 List<CameraDescription> cameras;
+CameraController controller;
 
 class CameraView extends StatefulWidget {
   @override
@@ -9,14 +12,18 @@ class CameraView extends StatefulWidget {
 }
 
 class _CameraViewState extends State<CameraView> {
-  CameraController controller;
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
     controller = CameraController(
       cameras[0],
-      ResolutionPreset.veryHigh,
+      ResolutionPreset.high,
       enableAudio: false,
     );
 
@@ -26,12 +33,6 @@ class _CameraViewState extends State<CameraView> {
       }
       setState(() {});
     });
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
   }
 
   @override
@@ -54,5 +55,19 @@ class _CameraViewState extends State<CameraView> {
         ),
       ),
     );
+  }
+}
+
+Future<String> takePhoto() async {
+  try {
+    final path = join(
+      (await getTemporaryDirectory()).path,
+      '${DateTime.now()}.png',
+    );
+    await controller.takePicture(path);
+    return path;
+  } catch (e) {
+    print(e);
+    return "";
   }
 }

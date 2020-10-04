@@ -1,7 +1,13 @@
+import 'dart:convert';
+import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:labelcheck/functions.dart';
 
 class CustomBottomSheet extends StatelessWidget {
+  final String path;
+
+  CustomBottomSheet(this.path);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,14 +52,16 @@ class CustomBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Text('Name und beschreibung, eventuell ein Bild'),
+          Text(path),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: () => launchURL(
-                    'mailto:bronzel.phillip@gmail.com?subject=Labelcheck Error&body=Image'), //TODO Implement Image as encoded String in body
+                onTap: () => io.File(path).readAsBytes().then(
+                      (value) => launchURL(
+                          'mailto:bronzel.phillip@gmail.com?subject=Labelcheck Error&body=Please send only if image actually has a label in it, do not delete the following base64 encoded image: ${base64Encode(value)}'),
+                    ),
                 child: Container(
                   child: Text('Report Error'),
                   padding: EdgeInsets.all(8),

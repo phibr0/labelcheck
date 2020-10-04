@@ -55,10 +55,12 @@ class Home extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.camera),
-        onPressed: () => showModalBottomSheet<void>(
-          context: context,
-          backgroundColor: Colors.transparent,
-          builder: (BuildContext context) => CustomBottomSheet(),
+        onPressed: () => takePhoto().then(
+          (value) => showModalBottomSheet<void>(
+            context: context,
+            backgroundColor: Colors.transparent,
+            builder: (BuildContext context) => CustomBottomSheet(value),
+          ),
         ),
       ),
       body: Stack(
