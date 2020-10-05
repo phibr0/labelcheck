@@ -1,4 +1,4 @@
-# Labelcheck  ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck) ![GitHub top language](https://img.shields.io/github/languages/top/phibr0/labelcheck)
+# Labelcheck  ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck)
 
 ## Introduction
 
