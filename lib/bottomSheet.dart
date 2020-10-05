@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:labelcheck/functions.dart';
 
 class CustomBottomSheet extends StatelessWidget {
-  final String path;
-
   CustomBottomSheet(this.path);
+
+  final String path;
 
   @override
   Widget build(BuildContext context) {
