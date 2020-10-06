@@ -21,16 +21,16 @@ class MyApp extends StatelessWidget {
       title: 'Labelcheck',
       material: (context, target) => MaterialAppData(
         theme: ThemeData(
-          primaryColor: Colors.amber,
-          accentColor: Colors.amberAccent,
+          primaryColor: Colors.blue,
+          accentColor: Colors.blueAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           brightness: Brightness.light,
           scaffoldBackgroundColor: Colors.white,
           errorColor: Colors.red,
         ),
         darkTheme: ThemeData(
-          primaryColor: Colors.blue,
-          accentColor: Colors.blueAccent,
+          primaryColor: Colors.amber,
+          accentColor: Colors.amberAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           brightness: Brightness.dark,
           scaffoldBackgroundColor: Colors.black,
@@ -58,7 +58,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   void initState() {
     super.initState();
-    ShakeDetector detector = ShakeDetector.autoStart(
+    ShakeDetector.autoStart(
       shakeThresholdGravity: 2,
       onPhoneShake: () => setState(() {
         print('shake');
@@ -66,7 +66,6 @@ class _HomeState extends State<Home> {
             msg: "Please hold the Device Still",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
             backgroundColor: Colors.black38,
             textColor: Colors.white,
             fontSize: 16.0);
