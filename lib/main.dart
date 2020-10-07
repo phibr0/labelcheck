@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:camera/camera.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:labelcheck/functions.dart';
 import 'package:shake/shake.dart';
 import 'bottomSheet.dart';
 import 'camera.dart';
@@ -21,16 +23,16 @@ class MyApp extends StatelessWidget {
       title: 'Labelcheck',
       material: (context, target) => MaterialAppData(
         theme: ThemeData(
-          primaryColor: Colors.blue,
-          accentColor: Colors.blueAccent,
+          primaryColor: Colors.amber,
+          accentColor: Colors.amberAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           brightness: Brightness.light,
           scaffoldBackgroundColor: Colors.white,
           errorColor: Colors.red,
         ),
         darkTheme: ThemeData(
-          primaryColor: Colors.amber,
-          accentColor: Colors.amberAccent,
+          primaryColor: Colors.blue,
+          accentColor: Colors.blueAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           brightness: Brightness.dark,
           scaffoldBackgroundColor: Colors.black,
@@ -77,14 +79,34 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.camera),
-        onPressed: () => takePhoto().then(
-          (value) => showModalBottomSheet<void>(
-            context: context,
-            backgroundColor: Colors.transparent,
-            builder: (BuildContext context) => CustomBottomSheet(value),
+      floatingActionButton: GestureDetector(
+        onLongPress: () async =>
+            await ImagePicker().getImage(source: ImageSource.gallery).then(
+          (pickedFile) {
+            if (pickedFile != null) {
+              classifyImage(pickedFile.path).then(
+                (result) => showModalBottomSheet<void>(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  builder: (BuildContext context) =>
+                      CustomBottomSheet(result.toString()),
+                ),
+              );
+            }
+          },
+        ),
+        child: FloatingActionButton(
+          onPressed: () => takePhoto().then(
+            (path) => classifyImage(path).then(
+              (result) => showModalBottomSheet<void>(
+                context: context,
+                backgroundColor: Colors.transparent,
+                builder: (BuildContext context) =>
+                    CustomBottomSheet(result.toString()),
+              ),
+            ),
           ),
+          child: Icon(Icons.camera),
         ),
       ),
       body: Stack(
