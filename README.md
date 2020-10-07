@@ -1,4 +1,4 @@
-# Labelcheck
+# Labelcheck 🏷️
 ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck)
 ### Im currently using a dog/cat model (CC0) for test purposes
 
