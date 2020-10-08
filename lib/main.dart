@@ -5,6 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:labelcheck/functions.dart';
 import 'package:shake/shake.dart';
+import 'package:tflite/tflite.dart';
 import 'bottomSheet.dart';
 import 'camera.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,6 +13,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
+  await Tflite.loadModel(
+    model: "assets/model/model.tflite",
+    labels: "assets/model/labels.txt",
+  );
   runApp(MyApp());
 }
 
@@ -88,8 +93,7 @@ class _HomeState extends State<Home> {
                 (result) => showModalBottomSheet<void>(
                   context: context,
                   backgroundColor: Colors.transparent,
-                  builder: (BuildContext context) =>
-                      CustomBottomSheet(result.toString()),
+                  builder: (BuildContext context) => CustomBottomSheet(result),
                 ),
               );
             }
@@ -101,8 +105,7 @@ class _HomeState extends State<Home> {
               (result) => showModalBottomSheet<void>(
                 context: context,
                 backgroundColor: Colors.transparent,
-                builder: (BuildContext context) =>
-                    CustomBottomSheet(result.toString()),
+                builder: (BuildContext context) => CustomBottomSheet(result),
               ),
             ),
           ),

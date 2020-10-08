@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:labelcheck/functions.dart';
+import 'package:labelcheck/wikipediaIntegration.dart';
 
 class CustomBottomSheet extends StatelessWidget {
-  CustomBottomSheet(this.path);
+  CustomBottomSheet(this.result);
 
-  final String path;
+  final List result;
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +53,15 @@ class CustomBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Text(path),
+          Text(result.toString()),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: () => io.File(path).readAsBytes().then(
+                onTap: () => io.File(result.toString()).readAsBytes().then(
                       (value) => launchURL(
+                          //Doesnt work anymore because the path isnt passed anymore (Just the result)
                           'mailto:bronzel.phillip@gmail.com?subject=Labelcheck Error&body=Please send only if image actually has a label in it, do not delete the following base64 encoded image: ${base64Encode(value)}'),
                     ),
                 child: Container(
@@ -74,14 +76,25 @@ class CustomBottomSheet extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                child: Text('More information'),
-                padding: EdgeInsets.all(8),
-                margin: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+              GestureDetector(
+                onTap: () async {
+                  await openWiki(await searchWiki(result
+                      .toString()
+                      .replaceAll('label: ', '')
+                      .replaceAll('}]', '')
+                      .trim()
+                      .split(',')
+                      .elementAt(2)));
+                },
+                child: Container(
+                  child: Text('More information'),
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
                 ),
               ),

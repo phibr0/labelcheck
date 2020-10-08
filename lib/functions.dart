@@ -10,11 +10,7 @@ launchURL(String url) async {
 }
 
 Future classifyImage(String path) async {
-  await Tflite.loadModel(
-    model: "assets/model/model.tflite",
-    labels: "assets/model/labels.txt",
-  );
   var output = await Tflite.runModelOnImage(path: path);
-  print(output);
+  //print(output);
   return output;
 }
