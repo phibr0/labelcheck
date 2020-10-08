@@ -93,7 +93,8 @@ class _HomeState extends State<Home> {
                 (result) => showModalBottomSheet<void>(
                   context: context,
                   backgroundColor: Colors.transparent,
-                  builder: (BuildContext context) => CustomBottomSheet(result),
+                  builder: (BuildContext context) =>
+                      CustomBottomSheet(result, pickedFile.path),
                 ),
               );
             }
@@ -105,7 +106,8 @@ class _HomeState extends State<Home> {
               (result) => showModalBottomSheet<void>(
                 context: context,
                 backgroundColor: Colors.transparent,
-                builder: (BuildContext context) => CustomBottomSheet(result),
+                builder: (BuildContext context) =>
+                    CustomBottomSheet(result, path),
               ),
             ),
           ),

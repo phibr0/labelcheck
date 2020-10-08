@@ -1,13 +1,12 @@
-import 'dart:convert';
-import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:labelcheck/functions.dart';
 import 'package:labelcheck/wikipediaIntegration.dart';
 
 class CustomBottomSheet extends StatelessWidget {
-  CustomBottomSheet(this.result);
+  CustomBottomSheet(this.result, this.path);
 
   final List result;
+  final String path;
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +58,7 @@ class CustomBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: () => io.File(result.toString()).readAsBytes().then(
-                      (value) => launchURL(
-                          //Doesnt work anymore because the path isnt passed anymore (Just the result)
-                          'mailto:bronzel.phillip@gmail.com?subject=Labelcheck Error&body=Please send only if image actually has a label in it, do not delete the following base64 encoded image: ${base64Encode(value)}'),
-                    ),
+                onTap: () => sendMailReport(path),
                 child: Container(
                   child: Text('Report Error'),
                   padding: EdgeInsets.all(8),

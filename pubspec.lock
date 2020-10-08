@@ -146,6 +146,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_mailer:
+    dependency: "direct main"
+    description:
+      name: flutter_mailer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_platform_widgets:
     dependency: "direct main"
     description:
@@ -610,5 +617,5 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-  dart: ">=2.10.0-110 <=2.11.0-185.0.dev"
+  dart: ">=2.10.0-110 <=2.11.0-186.0.dev"
   flutter: ">=1.17.5 <2.0.0"
