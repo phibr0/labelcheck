@@ -1,2 +1,2 @@
-0 Hund
-1 Katze
+0 Cat
+1 Dog
