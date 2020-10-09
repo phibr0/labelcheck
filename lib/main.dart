@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,6 +24,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return PlatformApp(
       debugShowCheckedModeBanner: false,
       title: 'Labelcheck',
@@ -52,7 +57,7 @@ class MyApp extends StatelessWidget {
           primaryContrastingColor: Colors.amberAccent,
         ),
       ),
-      home: Home(),
+      home: SafeArea(child: Home()),
     );
   }
 }
@@ -124,6 +129,15 @@ class _HomeState extends State<Home> {
               height: MediaQuery.of(context).size.height / 1.8,
             ),
           ),
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                print('menu button pressed');
+              },
+            ),
+          )
         ],
       ),
     );
