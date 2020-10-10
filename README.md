@@ -12,4 +12,4 @@
 >
 > APK: [Go to Releases](https://github.com/phibr0/labelcheck/releases)
 >
-> Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
+> Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release) You will need to register a Firebase Project and put the google-services.json inside the /android/app/ folder
