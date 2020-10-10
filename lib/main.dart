@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           primaryContrastingColor: Colors.amberAccent,
         ),
       ),
-      home: SafeArea(child: Home()),
+      home: Home(),
     );
   }
 }
@@ -131,11 +131,13 @@ class _HomeState extends State<Home> {
           ),
           Align(
             alignment: Alignment.topRight,
-            child: IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {
-                print('menu button pressed');
-              },
+            child: SafeArea(
+              child: IconButton(
+                icon: Icon(Icons.menu_rounded),
+                onPressed: () {
+                  print('menu button pressed');
+                },
+              ),
             ),
           )
         ],

@@ -1,4 +1,4 @@
-package com.example.labelcheck
+package com.phillip.labelcheck
 
 import io.flutter.embedding.android.FlutterActivity
 

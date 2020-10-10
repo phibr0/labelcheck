@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.labelcheck">
+    package="com.phillip.labelcheck">
    <application
         android:label="labelcheck"
         android:icon="@mipmap/ic_launcher"
