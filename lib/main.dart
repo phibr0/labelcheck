@@ -109,7 +109,7 @@ class _HomeState extends State<Home> {
                   );
                   await analytics.logEvent(
                     name: 'imageFromFile',
-                    parameters: <String, dynamic>{'result': result},
+                    parameters: <String, dynamic>{'result': result.toString()},
                   );
                 },
               );
@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
                   );
                   await analytics.logEvent(
                     name: 'imageFromCamera',
-                    parameters: <String, dynamic>{'result': result},
+                    parameters: <String, dynamic>{'result': result.toString()},
                   );
                 },
               ),

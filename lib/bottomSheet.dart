@@ -1,12 +1,16 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:labelcheck/functions.dart';
 import 'package:labelcheck/wikipediaIntegration.dart';
 
 class CustomBottomSheet extends StatelessWidget {
-  CustomBottomSheet(this.result, this.path);
-
   final List result;
+  static Result parsedResult;
   final String path;
+
+  CustomBottomSheet(this.result, this.path) {
+    parsedResult = Result(result);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +56,45 @@ class CustomBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Text(result.toString()),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height / 3.2,
+                width: 80,
+                child: BarChart(
+                  BarChartData(
+                    borderData: FlBorderData(show: false),
+                    titlesData: FlTitlesData(show: false),
+                    maxY: 1,
+                    alignment: BarChartAlignment.center,
+                    barGroups: [
+                      BarChartGroupData(
+                        barRods: [
+                          BarChartRodData(
+                            backDrawRodData: BackgroundBarChartRodData(
+                              colors: [Colors.grey],
+                              show: true,
+                              y: 1,
+                            ),
+                            gradientColorStops: [0.1, 0.9],
+                            colors: [
+                              Theme.of(context).primaryColor,
+                              Theme.of(context).accentColor,
+                            ],
+                            y: parsedResult.confidence,
+                          )
+                        ],
+                        x: parsedResult.index,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Text(parsedResult.label),
+            ],
+          ),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -73,13 +115,7 @@ class CustomBottomSheet extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  await openWiki(await searchWiki(result
-                      .toString()
-                      .replaceAll('label: ', '')
-                      .replaceAll('}]', '')
-                      .trim()
-                      .split(',')
-                      .elementAt(2)));
+                  await openWiki(await searchWiki(parsedResult.label));
                 },
                 child: Container(
                   child: Text('More information'),
