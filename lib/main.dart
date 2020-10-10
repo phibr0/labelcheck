@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -68,20 +69,24 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  FirebaseAnalytics analytics;
   void initState() {
     super.initState();
+    analytics = FirebaseAnalytics();
     ShakeDetector.autoStart(
       shakeThresholdGravity: 2,
-      onPhoneShake: () => setState(() {
-        print('shake');
-        Fluttertoast.showToast(
-            msg: "Please hold the Device Still",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            backgroundColor: Colors.black38,
-            textColor: Colors.white,
-            fontSize: 16.0);
-      }),
+      onPhoneShake: () => setState(
+        () {
+          print('shake');
+          Fluttertoast.showToast(
+              msg: "Please hold the Device Still",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              backgroundColor: Colors.black38,
+              textColor: Colors.white,
+              fontSize: 16.0);
+        },
+      ),
     );
   }
 
@@ -92,30 +97,44 @@ class _HomeState extends State<Home> {
       floatingActionButton: GestureDetector(
         onLongPress: () async =>
             await ImagePicker().getImage(source: ImageSource.gallery).then(
-          (pickedFile) {
+          (pickedFile) async {
             if (pickedFile != null) {
               classifyImage(pickedFile.path).then(
-                (result) => showModalBottomSheet<void>(
-                  context: context,
-                  backgroundColor: Colors.transparent,
-                  builder: (BuildContext context) =>
-                      CustomBottomSheet(result, pickedFile.path),
-                ),
+                (result) async {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    backgroundColor: Colors.transparent,
+                    builder: (BuildContext context) =>
+                        CustomBottomSheet(result, pickedFile.path),
+                  );
+                  await analytics.logEvent(
+                    name: 'imageFromFile',
+                    parameters: <String, dynamic>{'result': result},
+                  );
+                },
               );
             }
           },
         ),
         child: FloatingActionButton(
-          onPressed: () => takePhoto().then(
-            (path) => classifyImage(path).then(
-              (result) => showModalBottomSheet<void>(
-                context: context,
-                backgroundColor: Colors.transparent,
-                builder: (BuildContext context) =>
-                    CustomBottomSheet(result, path),
+          onPressed: () async {
+            takePhoto().then(
+              (path) => classifyImage(path).then(
+                (result) async {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    backgroundColor: Colors.transparent,
+                    builder: (BuildContext context) =>
+                        CustomBottomSheet(result, path),
+                  );
+                  await analytics.logEvent(
+                    name: 'imageFromCamera',
+                    parameters: <String, dynamic>{'result': result},
+                  );
+                },
               ),
-            ),
-          ),
+            );
+          },
           child: Icon(Icons.camera),
         ),
       ),
