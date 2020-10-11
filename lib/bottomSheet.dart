@@ -4,13 +4,14 @@ import 'package:labelcheck/functions.dart';
 import 'package:labelcheck/wikipediaIntegration.dart';
 
 class CustomBottomSheet extends StatelessWidget {
-  final List result;
-  static Result parsedResult;
-  final String path;
-
   CustomBottomSheet(this.result, this.path) {
     parsedResult = Result(result);
   }
+
+  static Result parsedResult;
+
+  final String path;
+  final List result;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class CustomBottomSheet extends StatelessWidget {
             ],
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
@@ -92,7 +93,32 @@ class CustomBottomSheet extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(parsedResult.label),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    parsedResult.label,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 4,
+                    width: MediaQuery.of(context).size.width / 1.4,
+                    child: SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      child: Text(
+                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+                        style: TextStyle(),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
           Row(
@@ -106,7 +132,14 @@ class CustomBottomSheet extends StatelessWidget {
                   padding: EdgeInsets.all(8),
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).errorColor,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Theme.of(context).errorColor,
+                        Colors.red,
+                      ],
+                    ),
                     borderRadius: BorderRadius.all(
                       Radius.circular(20),
                     ),
@@ -122,7 +155,14 @@ class CustomBottomSheet extends StatelessWidget {
                   padding: EdgeInsets.all(8),
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Theme.of(context).primaryColor,
+                        Theme.of(context).accentColor,
+                      ],
+                    ),
                     borderRadius: BorderRadius.all(
                       Radius.circular(20),
                     ),

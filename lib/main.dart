@@ -70,6 +70,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   FirebaseAnalytics analytics;
+
   void initState() {
     super.initState();
     analytics = FirebaseAnalytics();

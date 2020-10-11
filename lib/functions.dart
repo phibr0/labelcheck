@@ -34,6 +34,7 @@ parseLabel(input) {
       .toString()
       .replaceAll('label: ', '')
       .replaceAll('}]', '')
+      .replaceAll('}', '')
       .trim()
       .split(',')
       .elementAt(2);
@@ -59,13 +60,13 @@ parseIndex(input) {
 }
 
 class Result {
-  String label;
-  double confidence;
-  int index;
-
   Result(input) {
-    label = parseLabel(input);
+    label = parseLabel(input).trim();
     confidence = parseConfidence(input);
     index = parseIndex(input);
   }
+
+  double confidence;
+  int index;
+  String label;
 }
