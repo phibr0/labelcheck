@@ -105,6 +105,7 @@ class CustomBottomSheet extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  Divider(),
                   Container(
                     height: MediaQuery.of(context).size.height / 4,
                     width: MediaQuery.of(context).size.width / 1.4,

@@ -154,9 +154,7 @@ class _HomeState extends State<Home> {
             child: SafeArea(
               child: IconButton(
                 icon: Icon(Icons.menu_rounded),
-                onPressed: () {
-                  print('menu button pressed');
-                },
+                onPressed: () {},
               ),
             ),
           )

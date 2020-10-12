@@ -58,7 +58,6 @@ android {
             minifyEnabled true // add this
             shrinkResources true // add this
             zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' // add this
             pseudoLocalesEnabled false
             signingConfig signingConfigs.debug // this is default for release
         }
