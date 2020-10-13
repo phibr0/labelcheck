@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.0"
+    version: "11.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.39.17"
+    version: "0.40.4"
   args:
     dependency: transitive
     description:
@@ -42,7 +42,7 @@ packages:
       name: camera
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.8+7"
+    version: "0.5.8+8"
   characters:
     dependency: transitive
     description:
@@ -99,13 +99,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.16.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -262,7 +255,7 @@ packages:
       name: flutter_platform_widgets
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.60.2"
+    version: "0.70.2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -301,13 +294,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  html:
-    dependency: transitive
-    description:
-      name: html
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.14.0+4"
   http:
     dependency: transitive
     description:
@@ -756,4 +742,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.10.0-110 <=2.11.0-207.0.dev"
-  flutter: ">=1.17.5 <2.0.0"
+  flutter: ">=1.20.4 <2.0.0"
