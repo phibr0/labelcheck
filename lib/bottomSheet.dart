@@ -4,6 +4,7 @@ import 'package:labelcheck/functions.dart';
 import 'package:labelcheck/wikipediaIntegration.dart';
 
 import 'aboutPage.dart';
+import 'generated/l10n.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   CustomBottomSheet(this.result, this.path) {
@@ -136,7 +137,7 @@ class CustomBottomSheet extends StatelessWidget {
               GestureDetector(
                 onTap: () => sendMailReport(path),
                 child: Container(
-                  child: Text('Report Error'),
+                  child: Text(S.of(context).reportError),
                   padding: EdgeInsets.all(8),
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -159,7 +160,7 @@ class CustomBottomSheet extends StatelessWidget {
                   await openWiki(await searchWiki(parsedResult.label));
                 },
                 child: Container(
-                  child: Text('More information'),
+                  child: Text(S.of(context).moreInfo),
                   padding: EdgeInsets.all(8),
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(

@@ -11,6 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
   camera: ^0.5.8+7
   cupertino_icons: ^1.0.0
   flutter_platform_widgets: ^0.60.2
@@ -40,3 +44,6 @@ flutter:
   assets:
     - assets/images/
     - assets/model/
+    - assets/translations/
+flutter_intl:
+  enabled: true

@@ -2,6 +2,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,6 +13,7 @@ import 'aboutPage.dart';
 import 'bottomSheet.dart';
 import 'camera.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +33,28 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return PlatformApp(
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', ''), // English
+        const Locale('de', 'DE')
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        // Check if the current device locale is supported
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+        // If the locale of the device is not supported, use the first one
+        // from the list (English, in this case).
+        return supportedLocales.first;
+      },
       debugShowCheckedModeBanner: false,
       title: 'Labelcheck',
       material: (context, target) => MaterialAppData(
@@ -81,7 +105,7 @@ class _HomeState extends State<Home> {
         () {
           print('shake');
           Fluttertoast.showToast(
-              msg: "Please hold the Device Still",
+              msg: S.of(context).deviceShake,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               backgroundColor: Colors.black38,
@@ -161,7 +185,7 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'labelcheck',
+                        S.of(context).appName,
                         style: TextStyle(
                             fontSize: 42,
                             fontWeight: FontWeight.bold,

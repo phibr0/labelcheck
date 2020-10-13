@@ -39,7 +39,7 @@ class _CameraViewState extends State<CameraView> {
   Widget build(BuildContext context) {
     if (!controller.value.isInitialized) {
       return Center(
-        child: Text('Waiting for Camera...'),
+        child: CircularProgressIndicator(),
       );
     }
 

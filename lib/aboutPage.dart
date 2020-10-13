@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_awesome_buttons/flutter_awesome_buttons.dart';
 
 import 'functions.dart';
+import 'generated/l10n.dart';
 
 class About extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class About extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'about',
+                  S.of(context).about,
                   style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -34,7 +35,7 @@ class About extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Hi, I am Phillip Bronzel\n',
+                    S.of(context).hi,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 24,
@@ -42,7 +43,7 @@ class About extends StatelessWidget {
                         color: Theme.of(context).primaryColor),
                   ),
                   Text(
-                    "I created this App as a School Project, it's Open Source, so if you want to contribute you can check out the GitHub Repo below. If you want to give Feedback, or provide more images for the Dataset you can send me an Email.",
+                    S.of(context).aboutDescription,
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.justify,
                   ),
@@ -50,15 +51,15 @@ class About extends StatelessWidget {
               ),
               Divider(),
               LineButton(
-                title: 'Donate',
+                title: S.of(context).donate,
                 onPressed: () => showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text("Donation"),
+                      title: Text(S.of(context).donate),
                       actions: [
                         FlatButton(
-                          child: Text('Copy Adress'),
+                          child: Text(S.of(context).copyWallet),
                           onPressed: () => Clipboard.setData(
                             ClipboardData(
                                 text:
@@ -68,12 +69,11 @@ class About extends StatelessWidget {
                           ),
                         ),
                         FlatButton(
-                          child: Text('Close'),
+                          child: Text(S.of(context).close),
                           onPressed: () => Navigator.pop(context),
                         )
                       ],
-                      content: Text(
-                          "I accept donations via Monero, you can copy my Wallet Adress below:"),
+                      content: Text(S.of(context).donateInfo),
                     );
                   },
                 ),
@@ -88,7 +88,7 @@ class About extends StatelessWidget {
               ),
               SignInWithEmail(
                 onPressed: () => launchURL('mailto: bronzel.phillip@gmail.com'),
-                title: 'Feedback via Email',
+                title: S.of(context).feedback,
                 buttonColor: Theme.of(context).primaryColor,
                 fontColor: Theme.of(context).scaffoldBackgroundColor,
               ),
