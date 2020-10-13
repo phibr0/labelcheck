@@ -20,6 +20,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - shell: bash
+        env:
+          SECRET: ${{secrets.google-services.json}}
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
         with:
@@ -28,10 +31,8 @@ jobs:
         with:
           flutter-version: '1.22.1'
       - run: flutter pub get
-      - shell: bash
-        env:
-          SECRET: ${{secrets.google-services.json}}
-          run: echo "$SECRET" > /android/app/
+      - run: |
+          echo "$SECRET" > /android/app/
       - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons
 
 
