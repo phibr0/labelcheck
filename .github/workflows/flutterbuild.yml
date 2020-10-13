@@ -27,6 +27,11 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.22.1'
+      - shell: bash
+        env:
+          SECRET: ${{secrets.google-services.json}}
+          run: |
+            echo "$SECRET" > /android/app/
       - run: flutter pub get
       - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons
 
