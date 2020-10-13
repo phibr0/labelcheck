@@ -8,7 +8,7 @@
 
 ## Contribute
 
-> You can fork this Repository, make changes and open a Pull Request for me to review! Espacially Translations are welcome! They are located in `/lib/l10n/{languageCode}\_{countryCode}.arb`
+> You can fork this Repository, make changes and open a Pull Request for me to review! Espacially Translations are welcome! They are located in `/lib/l10n/{languageCode}_{countryCode}.arb`
 
 ## Installation
 
