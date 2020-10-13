@@ -17,3 +17,5 @@
 >
 > Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
 > (You will need to register a Firebase Project and put the google-services.json inside the /android/app/ folder)
+
+> More Info: https://phibr0.github.io/labelcheck/
