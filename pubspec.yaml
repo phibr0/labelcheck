@@ -29,6 +29,8 @@ dependencies:
   flutter_mailer: ^1.0.0
   fl_chart: ^0.12.0
   flutter_awesome_buttons: any
+  introduction_screen: ^1.0.9
+  shared_preferences: ^0.5.12
 
   firebase_core: ^0.5.0+1
   firebase_analytics: ^6.0.2

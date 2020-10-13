@@ -1,19 +1,16 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:camera/camera.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:labelcheck/functions.dart';
-import 'package:shake/shake.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tflite/tflite.dart';
-import 'aboutPage.dart';
-import 'bottomSheet.dart';
 import 'camera.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'generated/l10n.dart';
+import 'home.dart';
+import 'introduction.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,134 +80,50 @@ class MyApp extends StatelessWidget {
           primaryContrastingColor: Colors.amberAccent,
         ),
       ),
-      home: Home(),
+      home: Splash(),
     );
   }
 }
 
-class Home extends StatefulWidget {
+class Splash extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  SplashState createState() => SplashState();
 }
 
-class _HomeState extends State<Home> {
-  FirebaseAnalytics analytics;
+class SplashState extends State<Splash> {
+  Future checkFirstSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool _seen = (prefs.getBool('seen') ?? false);
+    if (_seen) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => MediaQueryProvider()));
+    } else {
+      prefs.setBool('seen', true);
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => Intro()));
+    }
+  }
 
+  @override
   void initState() {
     super.initState();
-    analytics = FirebaseAnalytics();
-    ShakeDetector.autoStart(
-      shakeThresholdGravity: 2,
-      onPhoneShake: () => setState(
-        () {
-          print('shake');
-          Fluttertoast.showToast(
-              msg: S.of(context).deviceShake,
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              backgroundColor: Colors.black38,
-              textColor: Colors.white,
-              fontSize: 16.0);
-        },
-      ),
-    );
+    checkFirstSeen();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: GestureDetector(
-        onLongPress: () async =>
-            await ImagePicker().getImage(source: ImageSource.gallery).then(
-          (pickedFile) async {
-            if (pickedFile != null) {
-              classifyImage(pickedFile.path).then(
-                (result) async {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    backgroundColor: Colors.transparent,
-                    builder: (BuildContext context) =>
-                        CustomBottomSheet(result, pickedFile.path),
-                  );
-                  await analytics.logEvent(
-                    name: 'imageFromFile',
-                    parameters: <String, dynamic>{'result': result.toString()},
-                  );
-                },
-              );
-            }
-          },
-        ),
-        child: FloatingActionButton(
-          onPressed: () async {
-            takePhoto().then(
-              (path) => classifyImage(path).then(
-                (result) async {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    backgroundColor: Colors.transparent,
-                    builder: (BuildContext context) =>
-                        CustomBottomSheet(result, path),
-                  );
-                  await analytics.logEvent(
-                    name: 'imageFromCamera',
-                    parameters: <String, dynamic>{'result': result.toString()},
-                  );
-                },
-              ),
-            );
-          },
-          child: Icon(Icons.camera),
-        ),
-      ),
-      body: Stack(
-        children: [
-          CameraView(),
-          Center(
-            child: Image.asset(
-              'assets/images/finder.png',
-              color: Theme.of(context).primaryColor,
-              height: MediaQuery.of(context).size.height / 1.8,
-            ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: SafeArea(
-              child: Opacity(
-                opacity: 0.8,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(12, 6, 12, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        S.of(context).appName,
-                        style: TextStyle(
-                            fontSize: 42,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.menu_rounded,
-                          color: Colors.white,
-                        ),
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => About(),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
+      body: Center(
+        child: CircularProgressIndicator(),
       ),
     );
+  }
+}
+
+class MediaQueryProvider extends StatelessWidget {
+  //Workaround for getting the Camera Button offset
+  @override
+  Widget build(BuildContext context) {
+    return Home(MediaQuery.of(context).size);
   }
 }
