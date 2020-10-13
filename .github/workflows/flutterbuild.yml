@@ -31,7 +31,7 @@ jobs:
         env:
           SECRET: ${{secrets.google-services.json}}
       - run: |
-          echo "$SECRET" > /android/app/
+          echo "$SECRET" > $HOME/android/app/google-services.json
       - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons
 
 
