@@ -44,6 +44,5 @@ flutter:
   assets:
     - assets/images/
     - assets/model/
-    - assets/translations/
 flutter_intl:
   enabled: true
