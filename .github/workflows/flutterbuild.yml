@@ -29,7 +29,7 @@ jobs:
           flutter-version: '1.22.1'
       - run: flutter pub get
       - run: |
-          echo ${{secrets.google-services.json}} > /home/runner/work/labelcheck/labelcheck/android/app/google-services.json
+          echo ${{secrets.gservices}} > /home/runner/work/labelcheck/labelcheck/android/app/google-services.json
       - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons
 
 
