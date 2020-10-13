@@ -1,5 +1,5 @@
 # Labelcheck 🏷️
-![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck)
+![Flutter Build](https://github.com/phibr0/labelcheck/workflows/Flutter%20Build/badge.svg) ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck)
 
 ## Introduction
 
