@@ -1,0 +1,50 @@
+name: labelcheck
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  camera: ^0.5.8+7
+  cupertino_icons: ^1.0.0
+  flutter_platform_widgets: ^0.70.2
+  fluttertoast: ^7.1.1
+  path: ^1.7.0
+  path_provider: ^1.6.18
+  shake: ^0.1.0
+  tflite: ^1.1.1
+  url_launcher: ^5.7.2
+  image_picker: ^0.6.7+11
+  dartpedia: ^1.6.6
+  flutter_mailer: ^1.0.0
+  fl_chart: ^0.12.0
+  flutter_awesome_buttons: any
+  introduction_screen: ^1.0.9
+  shared_preferences: ^0.5.12
+
+  firebase_core: ^0.5.0+1
+  firebase_analytics: ^6.0.2
+  firebase_crashlytics: ^0.2.1+1
+  firebase_performance: ^0.4.0+2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/model/
+flutter_intl:
+  enabled: true
