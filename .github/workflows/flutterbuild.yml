@@ -28,7 +28,6 @@ jobs:
         with:
           flutter-version: '1.22.1'
       - run: flutter pub get
-      - run: flutter test
       - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons
 
 
