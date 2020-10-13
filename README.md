@@ -6,6 +6,10 @@
 
 > A Cross-Platform Application using TensorFlow-Lite and Flutter to recognize labels on fruits or vegetables to get more information about their trustworthiness.
 
+## Contribute
+
+> You can fork this Repository, make changes and open a Pull Request for me to review! Espacially Translations are welcome! They are located in /lib/l10n/__{languageCode}\_{countryCode].arb__
+
 ## Installation
 
 > Playstore: [Google Play]()
