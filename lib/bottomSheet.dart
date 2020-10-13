@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:labelcheck/functions.dart';
 import 'package:labelcheck/wikipediaIntegration.dart';
 
+import 'aboutPage.dart';
+
 class CustomBottomSheet extends StatelessWidget {
   CustomBottomSheet(this.result, this.path) {
     parsedResult = Result(result);
@@ -37,7 +39,12 @@ class CustomBottomSheet extends StatelessWidget {
               IconButton(
                 padding: EdgeInsets.all(16),
                 icon: Icon(Icons.help_center),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => About(),
+                  ),
+                ),
               ),
               Container(
                 height: 6,

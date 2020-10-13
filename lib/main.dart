@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:labelcheck/functions.dart';
 import 'package:shake/shake.dart';
 import 'package:tflite/tflite.dart';
+import 'aboutPage.dart';
 import 'bottomSheet.dart';
 import 'camera.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -34,16 +35,16 @@ class MyApp extends StatelessWidget {
       title: 'Labelcheck',
       material: (context, target) => MaterialAppData(
         theme: ThemeData(
-          primaryColor: Colors.amber,
-          accentColor: Colors.amberAccent,
+          primaryColor: Colors.blue,
+          accentColor: Colors.blueAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           brightness: Brightness.light,
           scaffoldBackgroundColor: Colors.white,
           errorColor: Colors.red,
         ),
         darkTheme: ThemeData(
-          primaryColor: Colors.blue,
-          accentColor: Colors.blueAccent,
+          primaryColor: Colors.amber,
+          accentColor: Colors.amberAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           brightness: Brightness.dark,
           scaffoldBackgroundColor: Colors.black,
@@ -150,11 +151,37 @@ class _HomeState extends State<Home> {
             ),
           ),
           Align(
-            alignment: Alignment.topRight,
+            alignment: Alignment.topCenter,
             child: SafeArea(
-              child: IconButton(
-                icon: Icon(Icons.menu_rounded),
-                onPressed: () {},
+              child: Opacity(
+                opacity: 0.8,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(12, 6, 12, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'labelcheck',
+                        style: TextStyle(
+                            fontSize: 42,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.menu_rounded,
+                          color: Colors.white,
+                        ),
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => About(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           )

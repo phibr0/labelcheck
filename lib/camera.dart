@@ -14,7 +14,7 @@ class CameraView extends StatefulWidget {
 class _CameraViewState extends State<CameraView> {
   @override
   void dispose() {
-    controller?.dispose();
+    //controller?.dispose();
     super.dispose();
   }
 
