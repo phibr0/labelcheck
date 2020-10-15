@@ -6,6 +6,7 @@
 ## Introduction
 
 > A Cross-Platform Application using TensorFlow-Lite and Flutter to recognize labels on fruits or vegetables to get more information about their trustworthiness.
+> More Info: https://phibr0.github.io/labelcheck/
 
 ## Contribute
 
@@ -19,5 +20,3 @@
 >
 > Compile it yourself: [Flutter Documentation](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
 > (You will need to register a Firebase Project and put the google-services.json inside the /android/app/ folder)
-
-> More Info: https://phibr0.github.io/labelcheck/
