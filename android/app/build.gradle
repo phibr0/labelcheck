@@ -27,6 +27,11 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 android {
 
     aaptOptions {
@@ -53,13 +58,22 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+        release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true // add this
             shrinkResources true // add this
             zipAlignEnabled true
             pseudoLocalesEnabled false
-            signingConfig signingConfigs.debug // this is default for release
+            signingConfig signingConfigs.release // this is default for release
         }
     }
 }

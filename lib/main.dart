@@ -91,6 +91,12 @@ class Splash extends StatefulWidget {
 }
 
 class SplashState extends State<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    checkFirstSeen();
+  }
+
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool('seen') ?? false);
@@ -102,12 +108,6 @@ class SplashState extends State<Splash> {
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Intro()));
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkFirstSeen();
   }
 
   @override

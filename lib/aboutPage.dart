@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_awesome_buttons/flutter_awesome_buttons.dart';
-
 import 'functions.dart';
 import 'generated/l10n.dart';
 
