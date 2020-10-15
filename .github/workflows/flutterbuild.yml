@@ -31,7 +31,7 @@ jobs:
       - run: echo "$SECRET" > /home/runner/work/labelcheck/labelcheck/android/app/google-services.json
         env:
           SECRET: ${{secrets.gservices}}
-      - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons
+      - run: flutter build appbundle --obfuscate --split-debug-info debug_info --tree-shake-icons --debug
 
 
      
