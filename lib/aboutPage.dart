@@ -49,35 +49,6 @@ class About extends StatelessWidget {
                 ],
               ),
               Divider(),
-              LineButton(
-                title: S.of(context).donate,
-                onPressed: () => showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text(S.of(context).donate),
-                      actions: [
-                        FlatButton(
-                          child: Text(S.of(context).copyWallet),
-                          onPressed: () => Clipboard.setData(
-                            ClipboardData(
-                                text:
-                                    '45MeC6HdkJBgnL66faHjyPjkUFtGwkiYyXvukpU9YKa1aFMXzt2FsQa1mVLQiEFVtZiNuyV2eZY3uj6ft8Ur8JQZ9ewNde7'),
-                          ).whenComplete(
-                            () => Navigator.pop(context),
-                          ),
-                        ),
-                        FlatButton(
-                          child: Text(S.of(context).close),
-                          onPressed: () => Navigator.pop(context),
-                        )
-                      ],
-                      content: Text(S.of(context).donateInfo),
-                    );
-                  },
-                ),
-                lineColor: Theme.of(context).accentColor,
-              ),
               SignInWithGithub(
                 onPressed: () =>
                     launchURL('https://github.com/phibr0/labelcheck'),
