@@ -4,10 +4,7 @@
     "about": "about",
     "hi": "Hi, I am Phillip Bronzel\n",
     "aboutDescription": "I created this App as a School Project, it's Open Source, so if you want to contribute (Translations would be helpful) you can check out the GitHub Repo below. If you want to give Feedback, or provide more images for the Dataset you can send me an Email.",
-    "donate": "Donate",
-    "copyWallet": "Copy Address",
     "close": "Close",
-    "donateInfo": "I accept donations via Monero, you can copy my Wallet Adress below:",
     "feedback": "Feedback via Email",
     "reportError": "Report Error",
     "moreInfo": "More information"

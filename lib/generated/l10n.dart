@@ -85,41 +85,11 @@ class S {
     );
   }
 
-  /// `Donate`
-  String get donate {
-    return Intl.message(
-      'Donate',
-      name: 'donate',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Copy Address`
-  String get copyWallet {
-    return Intl.message(
-      'Copy Address',
-      name: 'copyWallet',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Close`
   String get close {
     return Intl.message(
       'Close',
       name: 'close',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `I accept donations via Monero, you can copy my Wallet Adress below:`
-  String get donateInfo {
-    return Intl.message(
-      'I accept donations via Monero, you can copy my Wallet Adress below:',
-      name: 'donateInfo',
       desc: '',
       args: [],
     );
