@@ -11,7 +11,7 @@ launchURL(String url) async {
 }
 
 Future classifyImage(String path) async {
-  var output = await Tflite.runModelOnImage(path: path);
+  var output = await Tflite.runModelOnImage(path: path, numResults: 1);
   //print(output);
   return output;
 }

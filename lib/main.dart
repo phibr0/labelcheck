@@ -16,8 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
   await Tflite.loadModel(
-    model: "assets/model/model.tflite",
-    labels: "assets/model/labels.txt",
+    model: "assets/model/converted_tflite/model.tflite",
+    labels: "assets/model/converted_tflite/labels.txt",
   );
   runApp(MyApp());
 }
