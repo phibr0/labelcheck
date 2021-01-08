@@ -62,6 +62,7 @@ class About extends StatelessWidget {
                 buttonColor: Theme.of(context).primaryColor,
                 fontColor: Theme.of(context).scaffoldBackgroundColor,
               ),
+              Divider(),
               OutlinedButton(
                 onPressed: () async {
                   PackageInfo packageInfo = await PackageInfo.fromPlatform();

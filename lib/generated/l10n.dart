@@ -134,6 +134,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Open Source`
+  String get opensource {
+    return Intl.message(
+      'Open Source',
+      name: 'opensource',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View it on Github`
+  String get opensourcedesc {
+    return Intl.message(
+      'View it on Github',
+      name: 'opensourcedesc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

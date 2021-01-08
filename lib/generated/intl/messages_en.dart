@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "feedback" : MessageLookupByLibrary.simpleMessage("Feedback via Email"),
     "hi" : MessageLookupByLibrary.simpleMessage("Hi, I am Phillip Bronzel\n"),
     "moreInfo" : MessageLookupByLibrary.simpleMessage("More information"),
+    "opensource" : MessageLookupByLibrary.simpleMessage("Open Source"),
+    "opensourcedesc" : MessageLookupByLibrary.simpleMessage("View it on Github"),
     "privacy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "reportError" : MessageLookupByLibrary.simpleMessage("Report Error")
   };
