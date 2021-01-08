@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_awesome_buttons/flutter_awesome_buttons.dart';
+import 'package:package_info/package_info.dart';
 import 'functions.dart';
 import 'generated/l10n.dart';
 
@@ -61,6 +61,31 @@ class About extends StatelessWidget {
                 title: S.of(context).feedback,
                 buttonColor: Theme.of(context).primaryColor,
                 fontColor: Theme.of(context).scaffoldBackgroundColor,
+              ),
+              OutlinedButton(
+                onPressed: () async {
+                  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+                  showAboutDialog(
+                    context: context,
+                    applicationIcon: Image.asset(
+                      'assets/images/logo.png',
+                      width: 50,
+                    ),
+                    applicationName: packageInfo.appName,
+                    applicationVersion: packageInfo.version +
+                        ' [Build ${packageInfo.buildNumber}]',
+                    applicationLegalese:
+                        'App Icon by Simon B.\nLarge parts of the dataset by Carolin L.\nPackage: ${packageInfo.packageName}',
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.info_outline_rounded),
+                    SizedBox(width: 5),
+                    Text(S.of(context).about)
+                  ],
+                ),
               ),
             ],
           ),
