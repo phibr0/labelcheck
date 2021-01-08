@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "feedback" : MessageLookupByLibrary.simpleMessage("Feedback via Email"),
     "hi" : MessageLookupByLibrary.simpleMessage("Hi, ich bin Phillip Bronzel\n"),
     "moreInfo" : MessageLookupByLibrary.simpleMessage("Mehr Informationen"),
+    "privacy" : MessageLookupByLibrary.simpleMessage("Datenschutzerklärung"),
     "reportError" : MessageLookupByLibrary.simpleMessage("Fehlerbericht senden")
   };
 }

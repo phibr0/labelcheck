@@ -124,6 +124,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Privacy Policy`
+  String get privacy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacy',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -83,7 +83,18 @@ class About extends StatelessWidget {
                   children: [
                     Icon(Icons.info_outline_rounded),
                     SizedBox(width: 5),
-                    Text(S.of(context).about)
+                    Text(S.of(context).about + ' app')
+                  ],
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () => launchURL('https://labelcheck.phibr0.de'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.privacy_tip_rounded),
+                    SizedBox(width: 5),
+                    Text(S.of(context).privacy.toLowerCase())
                   ],
                 ),
               ),
