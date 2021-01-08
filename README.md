@@ -3,6 +3,8 @@
 
 ![Flutter Build](https://github.com/phibr0/labelcheck/workflows/Flutter%20Build/badge.svg) ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck)
 
+![Preview Image](https://raw.githubusercontent.com/phibr0/labelcheck/main/previewImage.png)
+
 ## Introduction
 
 > A Cross-Platform Application using TensorFlow-Lite and Flutter to recognize labels on fruits or vegetables to get more information about their trustworthiness.
