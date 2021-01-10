@@ -16,7 +16,7 @@
 
 ## Installation
 
-> Playstore: [Google Play]()
+> Playstore: [Google Play](https://play.google.com/store/apps/details?id=com.phillip.labelcheck)
 >
 > APK: [Go to Releases](https://github.com/phibr0/labelcheck/releases)
 >
