@@ -1,27 +1,29 @@
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:labelcheck/functions.dart';
 import 'package:labelcheck/main.dart';
 
 List<PageViewModel> pages = [
   PageViewModel(
-    title: "Title of first page",
-    body: "description",
+    title: "Simple",
+    body: "Scan Labels to get more Information",
     image: Center(
-      child: Image.network("", height: 175.0),
+      child: Image.network(
+          'https://raw.githubusercontent.com/phibr0/labelcheck/main/store.png',
+          height: 225.0),
     ),
   ),
   PageViewModel(
-    title: "Title of second page",
-    body: "description",
-    image: Center(
-      child: Image.network("", height: 175.0),
+    footer: OutlineButton(
+      child: Text('GitHub'),
+      onPressed: () => launchURL('https://github.com/phibr0/labelcheck'),
     ),
-  ),
-  PageViewModel(
-    title: "Title of third page",
-    body: "description",
+    title: 'Open Source',
+    body: 'View it on GitHub',
     image: Center(
-      child: Image.network("", height: 175.0),
+      child: Image.network(
+          'https://raw.githubusercontent.com/phibr0/labelcheck/main/logo.png',
+          height: 225.0),
     ),
   ),
 ];

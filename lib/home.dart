@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_crop/image_crop.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:labelcheck/functions.dart';
 import 'package:shake/shake.dart';
@@ -107,45 +110,29 @@ class _HomeState extends State<Home> {
                     .getImage(source: ImageSource.gallery)
                     .then(
                   (pickedFile) async {
+                    await ImageCrop.requestPermissions();
                     if (pickedFile != null) {
-                      classifyImage(pickedFile.path).then(
-                        (result) async {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            backgroundColor: Colors.transparent,
-                            builder: (BuildContext context) =>
-                                CustomBottomSheet(result, pickedFile.path),
-                          );
-                          await analytics.logEvent(
-                            name: 'imageFromFile',
-                            parameters: <String, dynamic>{
-                              'result': result.toString()
-                            },
-                          );
-                        },
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Cropper(pickedFile.path),
+                        ),
                       );
                     }
                   },
                 ),
                 child: FloatingActionButton(
                   onPressed: () async {
+                    await ImageCrop.requestPermissions();
                     takePhoto().then(
-                      (path) => classifyImage(path).then(
-                        (result) async {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            backgroundColor: Colors.transparent,
-                            builder: (BuildContext context) =>
-                                CustomBottomSheet(result, path),
-                          );
-                          await analytics.logEvent(
-                            name: 'imageFromCamera',
-                            parameters: <String, dynamic>{
-                              'result': result.toString()
-                            },
-                          );
-                        },
-                      ),
+                      (path) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Cropper(path),
+                          ),
+                        );
+                      },
                     );
                   },
                   child: Icon(Icons.camera),
@@ -165,6 +152,78 @@ class _HomeState extends State<Home> {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class Cropper extends StatefulWidget {
+  final String path;
+  File imgFile;
+  Cropper(this.path) {
+    this.imgFile = File(path);
+  }
+  @override
+  _CropperState createState() => _CropperState();
+}
+
+class _CropperState extends State<Cropper> {
+  var analytics;
+  @override
+  void initState() {
+    super.initState();
+    analytics = FirebaseAnalytics();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        color: Colors.black,
+        padding: const EdgeInsets.all(20.0),
+        child: Stack(
+          children: [
+            Crop(
+              key: cropKey,
+              alwaysShowGrid: true,
+              image: FileImage(widget.imgFile),
+              aspectRatio: 1,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    classifyImage(widget.path).then(
+                      (result) async {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          backgroundColor: Colors.transparent,
+                          builder: (BuildContext context) =>
+                              CustomBottomSheet(result, widget.path),
+                        );
+                        await analytics.logEvent(
+                          name: 'imageFromCamera',
+                          parameters: <String, dynamic>{
+                            'result': result.toString()
+                          },
+                        );
+                      },
+                    );
+                  },
+                  child: Text('Scan'),
+                ),
+                SizedBox(
+                  height: 12,
+                  width: double.infinity,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -18,6 +18,7 @@ void main() async {
   await Tflite.loadModel(
     model: "assets/model/converted_tflite/model.tflite",
     labels: "assets/model/converted_tflite/labels.txt",
+    isAsset: true,
   );
   runApp(MyApp());
 }
