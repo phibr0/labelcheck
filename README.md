@@ -1,7 +1,7 @@
 # Labelcheck 🏷️
 
 
-![Flutter Build](https://github.com/phibr0/labelcheck/workflows/Flutter%20Build/badge.svg) ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck) [![Netlify Status](https://api.netlify.com/api/v1/badges/07cc0153-6422-455c-8fad-8b430d06af33/deploy-status)](https://app.netlify.com/sites/labelcheck/deploys)
+![Flutter Build](https://github.com/phibr0/labelcheck/workflows/Flutter%20Build/badge.svg) ![Netlify Status](https://api.netlify.com/api/v1/badges/07cc0153-6422-455c-8fad-8b430d06af33/deploy-status) ![GitHub issues](https://img.shields.io/github/issues/phibr0/labelcheck) ![](https://tokei.rs/b1/github/phibr0/labelcheck)
 
 ![Preview Image](https://raw.githubusercontent.com/phibr0/labelcheck/main/previewImage.png)
 
@@ -16,7 +16,7 @@
 
 ## Installation
 
-> Playstore: [Google Play]()
+> Playstore: [Google Play](https://play.google.com/store/apps/details?id=com.phillip.labelcheck)
 >
 > APK: [Go to Releases](https://github.com/phibr0/labelcheck/releases)
 >
