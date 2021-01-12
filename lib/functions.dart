@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/widgets.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
+import 'package:image_crop/image_crop.dart';
 import 'package:tflite/tflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,9 +14,25 @@ launchURL(String url) async {
   }
 }
 
-Future classifyImage(String path) async {
-  var output = await Tflite.runModelOnImage(path: path, numResults: 1);
-  //print(output);
+final cropKey = GlobalKey<CropState>();
+
+Future<dynamic> classifyImage(String path) async {
+  final crop = cropKey.currentState;
+  File imgFile = File(path);
+
+  final croppedFile = await ImageCrop.cropImage(
+    file: imgFile,
+    area: crop.area,
+  );
+
+  await croppedFile.create();
+  print(croppedFile.absolute.path);
+
+  var output = await Tflite.runModelOnImage(
+    imageStd: 255.0,
+    path: croppedFile.absolute.path,
+    numResults: 1,
+  );
   return output;
 }
 
@@ -30,6 +50,7 @@ sendMailReport(imagepath) async {
 }
 
 parseLabel(input) {
+  print(input);
   return input
       .toString()
       .replaceAll('label: ', '')
@@ -41,13 +62,15 @@ parseLabel(input) {
 }
 
 parseConfidence(input) {
-  return double.parse(input
+  double x = double.parse(input
       .toString()
       .replaceAll('confidence: ', '')
       .replaceAll('[{', '')
       .trim()
       .split(',')
       .elementAt(0));
+  x = x / 100;
+  return x;
 }
 
 parseIndex(input) {
