@@ -178,10 +178,15 @@ class _CropperState extends State<Cropper> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          S.of(context).guide,
+        ),
+      ),
+      body: Container(
         color: Colors.black,
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: Stack(
           children: [
             Crop(

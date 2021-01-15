@@ -84,9 +84,15 @@ parseIndex(input) {
 
 class Result {
   Result(input) {
-    label = parseLabel(input).trim();
-    confidence = parseConfidence(input);
-    index = parseIndex(input);
+    if (input.toString() != '[]') {
+      label = parseLabel(input).trim();
+      confidence = parseConfidence(input);
+      index = parseIndex(input);
+    } else {
+      confidence = -1;
+      index = -1;
+      label = 'Error';
+    }
   }
 
   double confidence;
