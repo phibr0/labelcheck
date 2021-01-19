@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "hi" : MessageLookupByLibrary.simpleMessage("Hi, ich bin Phillip Bronzel\n"),
     "moreInfo" : MessageLookupByLibrary.simpleMessage("Mehr Informationen"),
     "msc" : MessageLookupByLibrary.simpleMessage("Das MSC Siegel verspricht eine Verhinderung von Überfischung, die Funktionsfähigkeit und Artenvielfalt aller betroffenen Ökosysteme darf nicht beinträchtigt werden und alle regionelen und internationalen Gesetze müssen eingehalten werden. Es gibt aber auch viele Kritiken, so behauptet Greenpeace, MSC würde die Siegel zu früh rausgeben und ein \"Versprechen\" an MSC: \"in Zukunft wird sich etwas bessern\" genüge bereits um die Zertifizierung zu erhalten. Auch dürfen teilweise weiterhin problematische Fangmethoden eingesetzt werden, welche zum Beispiel Schäden am Meeresboden anrichten."),
+    "nothingFound" : MessageLookupByLibrary.simpleMessage("Es konnte kein unterstützes Label gefunden werden..."),
     "ohneGen" : MessageLookupByLibrary.simpleMessage("Das \"ohne Gentechnik\" Siegel unterbindet den Einsatz von gentechnisch veränderten Organismen und Teilen davon, auch Futtermittel wird ohne Gentechnik hergestellt. Ebenfalls wird der Einsatz von gentechnisch veränderten Vitaminen, Aromen, Enzymen und anderen Lebensmittelzusatzstoffen unterbunden."),
     "privacy" : MessageLookupByLibrary.simpleMessage("Datenschutzerklärung"),
     "reportError" : MessageLookupByLibrary.simpleMessage("Fehlerbericht senden")

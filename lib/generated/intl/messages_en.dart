@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "hi" : MessageLookupByLibrary.simpleMessage("Hi, I am Phillip Bronzel\n"),
     "moreInfo" : MessageLookupByLibrary.simpleMessage("More information"),
     "msc" : MessageLookupByLibrary.simpleMessage("The MSC label promises to prevent overfishing, the functionality and biodiversity of all affected ecosystems must not be impaired and all regional and international laws must be observed. But there are also many criticisms, so Greenpeace claims, MSC would issue the label too early and a \"promise\" to MSC: \"In the future something will improve\" is enough to get the certification. In some cases, problematic fishing methods may still be used, which for example cause damage to the seabed."),
+    "nothingFound" : MessageLookupByLibrary.simpleMessage("No supported Label was found"),
     "ohneGen" : MessageLookupByLibrary.simpleMessage("The \"ohne Gentechnik\" label prevents the use of genetically modified organisms and parts thereof, and animal feed is also produced without genetic engineering. The use of genetically modified vitamins, flavors, enzymes and other food additives is also prevented."),
     "privacy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "reportError" : MessageLookupByLibrary.simpleMessage("Report Error")

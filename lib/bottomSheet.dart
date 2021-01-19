@@ -16,6 +16,35 @@ class CustomBottomSheet extends StatelessWidget {
   final String path;
   final List result;
 
+  String getDescription(int index, BuildContext context) {
+    switch (index) {
+      case 0:
+        return S.of(context).bio;
+        break;
+      case 1:
+        return S.of(context).bioland;
+        break;
+      case 2:
+        return S.of(context).eulabel;
+        break;
+      case 3:
+        return S.of(context).fairtrade;
+        break;
+      case 4:
+        return S.of(context).msc;
+        break;
+      case 5:
+        return S.of(context).demeter;
+        break;
+      case 6:
+        return S.of(context).ohneGen;
+        break;
+      default:
+        return S.of(context).nothingFound;
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -120,7 +149,7 @@ class CustomBottomSheet extends StatelessWidget {
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
                       child: Text(
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+                        getDescription(parsedResult.index, context),
                         style: TextStyle(),
                         textAlign: TextAlign.justify,
                       ),

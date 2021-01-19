@@ -145,6 +145,16 @@ class S {
     );
   }
 
+  /// `No supported Label was found`
+  String get nothingFound {
+    return Intl.message(
+      'No supported Label was found',
+      name: 'nothingFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `For the Demeter label, at least 90% of the ingredients must also bear the Demeter label, the product may only contain aromas and extracts from the named plant and a total of only 22 additives are permitted. Genetic engineering is also completely excluded. However, every company must keep animals, but dehorning shouldn't be performed and the keeping of polled breeds is also prohibited. The entire company must operate ecologically.`
   String get demeter {
     return Intl.message(
